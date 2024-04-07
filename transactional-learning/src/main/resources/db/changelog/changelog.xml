@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="init" author="dpham">
+        <createTable tableName="person">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar"/>
+            <column name="version" type="bigint"/>
+        </createTable>
+        <createTable tableName="room">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar"/>
+            <column name="version" type="bigint"/>
+        </createTable>
+        <createTable tableName="booking">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="person_id" type="bigint">
+                <constraints foreignKeyName="fk-booking-person" referencedTableName="person" referencedColumnNames="id"/>
+            </column>
+            <column name="room_id" type="bigint">
+                <constraints foreignKeyName="fk-booking-room" referencedTableName="room" referencedColumnNames="id"/>
+            </column>
+            <column name="from_day" type="date"/>
+            <column name="to_day" type="date"/>
+            <column name="version" type="bigint"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

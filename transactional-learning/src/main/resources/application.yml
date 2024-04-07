@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: transactional-learning
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/hotel
+    username: postgres
+    password: password
+  liquibase:
+    change-log: db/changelog/changelog.xml
+    enabled: true
+    driver-class-name: org.postgresql.Driver
